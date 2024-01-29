@@ -4,7 +4,7 @@ import cv2
 import settings
 
 def load_model(model_path):
-    model = YOLO('weights/best.pt')
+    model = YOLO(model_path)
     return model
 
 def display_tracker_options():
