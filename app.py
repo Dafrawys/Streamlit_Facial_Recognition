@@ -31,12 +31,11 @@ model_type = st.sidebar.radio(
 
 confidence = float(st.sidebar.slider(
     "Select Model Confidence", 25, 100, 40)) / 100
-
 model_path = Path(settings.DETECTION_MODEL)
 
 # Load Pre-trained ML Model
 try:
-    model = helper.load_model('.\\weights\\best.pt')
+    model = helper.load_model(model_path)
 except Exception as ex:
     st.error(f"Unable to load model. Check the specified path: {model_path}")
     st.error(ex)

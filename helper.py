@@ -4,9 +4,9 @@ import cv2
 import settings
 
 def load_model(model_path):
-    model = YOLO('.\\weights\\best.pt')
+    model_path = Path(settings.DETECTION_MODEL)
+    model = YOLO(model_path)
     return model
-
 
 def display_tracker_options():
     display_tracker = st.radio("Display Tracker", ('Yes', 'No'))
