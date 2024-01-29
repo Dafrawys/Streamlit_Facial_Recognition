@@ -11,36 +11,32 @@ import helper
 
 # Setting page layout
 st.set_page_config(
-    page_title="Object Detection using YOLOv8",
+    page_title="Facial Detection & Recognition",
     page_icon="🤖",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
 # Main page heading
-st.title("Object Detection")
-st.caption('Updload a photo with this :blue[hand signals]: :+1:, :hand:, :i_love_you_hand_sign:, and :spock-hand:.')
-st.caption('Then click the :blue[Detect Objects] button and check the result.')
+st.title("Facial Detection & Recognition")
+st.caption('Updload an image, video or use webcam')
+st.caption('Then click the :red[Detect Faces] button and check the result.')
 
 # Sidebar
 st.sidebar.header("ML Model Config")
 
 # Model Options
 model_type = st.sidebar.radio(
-    "Select Task", ['Detection', 'Segmentation'])
+    "Select Task", ['Detection'])
 
 confidence = float(st.sidebar.slider(
     "Select Model Confidence", 25, 100, 40)) / 100
 
-# Selecting Detection Or Segmentation
-if model_type == 'Detection':
-    model_path = Path(settings.DETECTION_MODEL)
-elif model_type == 'Segmentation':
-    model_path = Path(settings.SEGMENTATION_MODEL)
+model_path = Path(settings.DETECTION_MODEL)
 
 # Load Pre-trained ML Model
 try:
-    model = helper.load_model(model_path)
+    model = helper.load_model('C:\\Users\\DELL\\Desktop\\grad_project\\test\\weights\\best.pt')
 except Exception as ex:
     st.error(f"Unable to load model. Check the specified path: {model_path}")
     st.error(ex)
@@ -68,7 +64,7 @@ if source_radio == settings.IMAGE:
             st.error(ex)
 
     with col2:        
-            if st.sidebar.button('Detect Objects'):
+            if st.sidebar.button('Detect Faces'):
                 res = model.predict(uploaded_image,
                                     conf=confidence
                                     )
@@ -89,9 +85,6 @@ elif source_radio == settings.VIDEO:
 
 elif source_radio == settings.WEBCAM:
     helper.play_webcam(confidence, model)
-
-elif source_radio == settings.YOUTUBE:
-    helper.play_youtube_video(confidence, model)
 
 else:
     st.error("Please select a valid source type!")
