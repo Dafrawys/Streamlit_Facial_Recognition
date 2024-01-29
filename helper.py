@@ -4,7 +4,7 @@ import cv2
 import settings
 
 def load_model(model_path):
-    model = YOLO('C:\\Users\\DELL\\Desktop\\grad_project\\test\\weights\\best.pt')
+    model = YOLO('.\\weights\\best.pt')
     return model
 
 
