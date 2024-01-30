@@ -19,7 +19,7 @@ st.set_page_config(
 
 # Main page heading
 st.title("Facial Detection & Recognition")
-st.caption('Updload an image, video or use webcam')
+st.caption('Upload an image, video or use webcam')
 st.caption('Then click the :red[Detect Faces] button and check the result.')
 
 # Sidebar
