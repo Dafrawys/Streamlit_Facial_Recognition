@@ -8,7 +8,6 @@ import streamlit as st
 # Local Modules
 import settings
 import helper
-
 # Setting page layout
 st.set_page_config(
     page_title="Facial Detection & Recognition",
